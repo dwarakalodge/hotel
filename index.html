@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dwaraka Lodge Kavali | Premium Stay</title>
+<title>Dwaraka Lodge Kavali</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="images/logo.png" type="image/png">
 <style>
 /* PAGE RESET */
-html, body { height: 100%; margin: 0; padding: 0; }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
-body{background:#f4f4f4;color:#1C1C1C;}
+html, body{height:100%;width:100%;}
+body{background:#FDFCF6;color:#1C1C1C;overflow-x:hidden;}
 
 /* NAVBAR */
 nav{position:sticky;top:0;background:white;display:flex;justify-content:space-between;align-items:center;padding:15px 40px;box-shadow:0 2px 10px rgba(0,0,0,.05);z-index:100;transition:0.3s;}
@@ -23,11 +23,11 @@ nav.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.15);}
 .nav-links a:hover,.nav-links a.active{color:#000000;}
 .menu-toggle{display:none;font-size:26px;cursor:pointer;}
 
-/* HERO - FULL SCREEN FIX */
-.hero{width:100vw; height:100vh; position:relative; overflow:hidden;}
-.slide{position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; opacity:0; transition:1s;}
+/* HERO */
+.hero{height:100vh;width:100vw;position:relative;overflow:hidden;}
+.slide{position:absolute;width:100%;height:100%;top:0;left:0;background-size:cover;background-position:center;opacity:0;transition:1s;}
 .slide.active{opacity:1;}
-.hero-overlay{position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.5);}
+.hero-overlay{position:absolute;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,0.5);}
 .hero-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white;padding:40px 50px;border-radius:12px;}
 .hero h1{font-size:55px;margin-bottom:10px;animation:fadeInDown 1s ease forwards;}
 .hero p{font-size:22px;margin-bottom:20px;animation:fadeInUp 1s ease forwards;}
@@ -85,12 +85,6 @@ footer{background:#111;color:white;text-align:center;padding:30px;margin-top:40p
 .whatsapp{position:fixed;bottom:25px;right:25px;z-index:1001;background:#25D366;color:white;padding:15px 20px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(0,0,0,.2);}
 .call{position:fixed;bottom:90px;right:25px;z-index:1001;background:#007BFF;color:white;padding:15px 20px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(0,0,0,.2);}
 
-/* BOOKING BAR */
-.booking-bar{position:fixed;bottom:0;right:0;left:0;width:auto;margin:auto;max-width:500px;z-index:1000;background:#000000;color:#C59D5F;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:12px 20px;border-radius:50px 50px 0 0;box-shadow:0 4px 15px rgba(0,0,0,.25);}
-.booking-bar span{font-size:16px;font-weight:500;}
-.booking-bar button{background:#C59D5F;border:none;padding:12px 28px;border-radius:50px;color:#000000;cursor:pointer;font-weight:500;font-size:16px;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.2);}
-.booking-bar button:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,.25);}
-
 /* ANIMATIONS */
 .fade{opacity:0;transform:translateY(40px);transition:1s;}
 .slide-left{opacity:0;transform:translateX(-60px);transition:1s;}
@@ -105,12 +99,11 @@ footer{background:#111;color:white;text-align:center;padding:30px;margin-top:40p
 .nav-links.active{display:flex;}
 .menu-toggle{display:block;}
 .room-content .btn{width:100%;}
-.booking-bar{flex-direction:column;gap:10px;padding:15px;max-width:90%;}
 .hero-content{padding:30px 25px;}
 }
 </style>
 </head>
-<body onload="window.scrollTo(0,0)">
+<body>
 
 <nav>
 <div class="logo">
@@ -143,8 +136,6 @@ footer{background:#111;color:white;text-align:center;padding:30px;margin-top:40p
 </div>
 </div>
 </section>
-
-<!-- THE REST OF YOUR CONTENT REMAINS EXACTLY AS YOUR BASE CODE -->
 
 <!-- ABOUT -->
 <section id="about" class="fade">
@@ -249,7 +240,9 @@ Established in 1998, Dwaraka Lodge has welcomed travelers for nearly three decad
 
 <script>
 // Scroll to top on reload
-window.scrollTo(0,0);
+window.history.scrollRestoration = "manual";
+window.addEventListener('beforeunload', () => { window.scrollTo(0, 0); });
+window.addEventListener('load', () => { window.scrollTo(0, 0); });
 
 // Sticky nav shadow
 window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50);});
