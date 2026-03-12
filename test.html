@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dwaraka Lodge Kavali | Premium Stay</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="images/logo.png" type="image/png">
+<style>
+/* PAGE RESET */
+html, body { height: 100%; margin: 0; padding: 0; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+body{background:#f4f4f4;color:#1C1C1C;}
+
+/* NAVBAR */
+nav{position:sticky;top:0;background:white;display:flex;justify-content:space-between;align-items:center;padding:15px 40px;box-shadow:0 2px 10px rgba(0,0,0,.05);z-index:100;transition:0.3s;}
+nav.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.15);}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:50px;}
+.logo span{font-weight:700;font-size:22px;color:#000000;}
+.nav-links{display:flex;gap:30px;}
+.nav-links a{text-decoration:none;color:#1C1C1C;font-weight:500;transition:0.3s;}
+.nav-links a:hover,.nav-links a.active{color:#000000;}
+.menu-toggle{display:none;font-size:26px;cursor:pointer;}
+
+/* HERO - FULL SCREEN FIX */
+.hero{width:100vw; height:100vh; position:relative; overflow:hidden;}
+.slide{position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; opacity:0; transition:1s;}
+.slide.active{opacity:1;}
+.hero-overlay{position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.5);}
+.hero-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white;padding:40px 50px;border-radius:12px;}
+.hero h1{font-size:55px;margin-bottom:10px;animation:fadeInDown 1s ease forwards;}
+.hero p{font-size:22px;margin-bottom:20px;animation:fadeInUp 1s ease forwards;}
+.hero-buttons{margin-top:15px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap;}
+.btn{padding:14px 28px;border:none;border-radius:50px;cursor:pointer;font-size:16px;font-weight:500;transition:0.3s;box-shadow:0 4px 15px rgba(0,0,0,.15);}
+.btn:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,.2);}
+.btn-whatsapp{background:#25D366;color:white;}
+.btn-call{background:#007BFF;color:white;}
+
+/* SECTIONS */
+section{max-width:1100px;margin:auto;padding:80px 20px;}
+.section-title{text-align:center;font-size:32px;margin-bottom:45px;color:#000000;}
+
+/* ROOMS */
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+.room{background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.1);display:flex;flex-direction:column;justify-content:space-between;transition:.4s;position:relative;}
+.room:hover{transform:translateY(-10px);}
+.room img{width:100%;height:200px;object-fit:cover;}
+.room-content{padding:20px;display:flex;flex-direction:column;justify-content:space-between;flex-grow:1;}
+.room-content h3{margin-bottom:10px;color:#000000;}
+.price{color:#1C1C1C;font-weight:600;margin-bottom:10px;}
+.room-content .btn{align-self:center;padding:10px 25px;background:#25D366;color:#ffffff;}
+.room-content .btn:hover{background:#b88f50;}
+.badge{position:absolute;top:15px;left:15px;background:#ffffff;color:#000000;padding:5px 12px;border-radius:50px;font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+
+/* AMENITIES */
+.amenities{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;}
+.amenity{background:white;padding:25px;border-radius:12px;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,.08);font-size:16px;color:#1C1C1C;transition:0.3s;}
+.amenity:hover{transform:scale(1.05);box-shadow:0 6px 25px rgba(0,0,0,.15);}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;text-align:center;}
+.stat{background:white;padding:30px;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+.stat h3{font-size:40px;color:#000000;margin-bottom:10px;}
+.stat p{color:#1C1C1C;}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;}
+.gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px;cursor:pointer;transition:.4s;}
+.gallery img:hover{transform:scale(1.05);}
+
+/* MAP */
+.map iframe{width:100%;height:350px;border:0;border-radius:12px;}
+
+/* CONTACT FORM */
+.contact-form{max-width:600px;margin:auto;background:white;padding:30px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.1);}
+.contact-form input, .contact-form textarea{width:100%;padding:12px;margin-bottom:15px;border-radius:8px;border:1px solid #ccc;font-size:16px;}
+.contact-form button{background:#25D366;color:#ffffff;padding:12px 28px;border:none;border-radius:50px;font-weight:500;cursor:pointer;transition:.3s;}
+.contact-form button:hover{background:#b88f50;}
+
+/* FOOTER */
+footer{background:#111;color:white;text-align:center;padding:30px;margin-top:40px;border-top:2px solid #000000;}
+
+/* FLOATING BUTTONS */
+.whatsapp{position:fixed;bottom:25px;right:25px;z-index:1001;background:#25D366;color:white;padding:15px 20px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(0,0,0,.2);}
+.call{position:fixed;bottom:90px;right:25px;z-index:1001;background:#007BFF;color:white;padding:15px 20px;border-radius:50px;text-decoration:none;box-shadow:0 4px 15px rgba(0,0,0,.2);}
+
+/* BOOKING BAR */
+.booking-bar{position:fixed;bottom:0;right:0;left:0;width:auto;margin:auto;max-width:500px;z-index:1000;background:#000000;color:#C59D5F;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:12px 20px;border-radius:50px 50px 0 0;box-shadow:0 4px 15px rgba(0,0,0,.25);}
+.booking-bar span{font-size:16px;font-weight:500;}
+.booking-bar button{background:#C59D5F;border:none;padding:12px 28px;border-radius:50px;color:#000000;cursor:pointer;font-weight:500;font-size:16px;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.2);}
+.booking-bar button:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,.25);}
+
+/* ANIMATIONS */
+.fade{opacity:0;transform:translateY(40px);transition:1s;}
+.slide-left{opacity:0;transform:translateX(-60px);transition:1s;}
+.slide-right{opacity:0;transform:translateX(60px);transition:1s;}
+.zoom{opacity:0;transform:scale(.8);transition:1s;}
+.show{opacity:1;transform:translate(0) scale(1);}
+@keyframes fadeInDown{0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes fadeInUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+
+@media(max-width:768px){
+.nav-links{position:absolute;top:70px;right:0;background:white;flex-direction:column;width:200px;display:none;box-shadow:0 10px 20px rgba(0,0,0,.1);}
+.nav-links.active{display:flex;}
+.menu-toggle{display:block;}
+.room-content .btn{width:100%;}
+.booking-bar{flex-direction:column;gap:10px;padding:15px;max-width:90%;}
+.hero-content{padding:30px 25px;}
+}
+</style>
+</head>
+<body onload="window.scrollTo(0,0)">
+
+<nav>
+<div class="logo">
+<img src="images/logo.png" alt="Dwaraka Lodge">
+<span>Dwaraka Lodge</span>
+</div>
+<div class="menu-toggle">☰</div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#stats">Stats</a>
+<a href="#rooms">Rooms</a>
+<a href="#amenities">Amenities</a>
+<a href="#gallery">Gallery</a>
+<a href="#location">Location</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="slide active" style="background-image:url('images/exterior.jpg')"></div>
+<div class="slide" style="background-image:url('images/lobby.jpg')"></div>
+<div class="slide" style="background-image:url('images/bedroom.jpg')"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>Dwaraka Lodge</h1>
+<p>Kavali’s Trusted Stay Since 1998</p>
+<div class="hero-buttons">
+<button class="btn btn-whatsapp" onclick="bookRoom('Room Booking Inquiry')">Book on WhatsApp</button>
+</div>
+</div>
+</section>
+
+<!-- THE REST OF YOUR CONTENT REMAINS EXACTLY AS YOUR BASE CODE -->
+
+<!-- ABOUT -->
+<section id="about" class="fade">
+<h2 class="section-title">Our Legacy</h2>
+<p style="text-align:center;font-size:18px;">
+Established in 1998, Dwaraka Lodge has welcomed travelers for nearly three decades. Renovated in 2026 with modern comfort and hygiene.
+</p>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+<h2 class="section-title fade">Our Journey</h2>
+<div class="stats">
+<div class="stat zoom"><h3 class="counter" data-target="27">0</h3><p>Years of Service</p></div>
+<div class="stat zoom"><h3 class="counter" data-target="25000">0</h3><p>Guests Served</p></div>
+<div class="stat zoom"><h3 class="counter" data-target="40">0</h3><p>Rooms</p></div>
+</div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+<h2 class="section-title fade">Rooms</h2>
+<div class="rooms">
+<div class="room slide-left">
+<div class="badge">Best Seller</div>
+<img src="images/room1.jpg">
+<div class="room-content">
+<h3>Standard Non-AC</h3>
+<p class="price">₹899 / Night</p>
+<button class="btn btn-whatsapp" onclick="bookRoom('Standard Non AC Room')">Book Now</button>
+</div>
+</div>
+<div class="room zoom">
+<div class="badge">AC</div>
+<img src="images/room2.jpg">
+<div class="room-content">
+<h3>Deluxe AC</h3>
+<p class="price">₹1399 / Night</p>
+<button class="btn btn-whatsapp" onclick="bookRoom('Deluxe AC Room')">Book Now</button>
+</div>
+</div>
+<div class="room slide-right">
+<div class="badge">Family</div>
+<img src="images/room3.jpg">
+<div class="room-content">
+<h3>Family Suite</h3>
+<p class="price">₹1899 / Night</p>
+<button class="btn btn-whatsapp" onclick="bookRoom('Family Suite')">Book Now</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+<h2 class="section-title fade">Amenities</h2>
+<div class="amenities">
+<div class="amenity zoom">📶 Free WiFi</div>
+<div class="amenity zoom">🚿 Hot Water</div>
+<div class="amenity zoom">🅿️ Parking</div>
+<div class="amenity zoom">🛎️ 24/7 Desk</div>
+<div class="amenity zoom">📹 CCTV Security</div>
+<div class="amenity zoom">⚡ Power Backup</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<h2 class="section-title fade">Gallery</h2>
+<div class="gallery">
+<img src="images/exterior.jpg" class="zoom">
+<img src="images/bedroom.jpg" class="zoom">
+<img src="images/restroom.jpg" class="zoom">
+<img src="images/lobby.jpg" class="zoom">
+</div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="fade">
+<h2 class="section-title">Location</h2>
+<div class="map">
+<iframe src="https://www.google.com/maps?q=Dwaraka+Lodge+Kavali&output=embed" loading="lazy"></iframe>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade">
+<h2 class="section-title">Contact</h2>
+<div class="contact-form">
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="5" placeholder="Your Message"></textarea>
+<button onclick="bookRoom('Room Booking Inquiry')">Send Message & Book</button>
+</div>
+</section>
+
+<footer>© 2026 Dwaraka Lodge Kavali</footer>
+
+<!-- FLOATING BUTTONS -->
+<a class="whatsapp" href="https://wa.me/919550830888">WhatsApp</a>
+<a class="call" href="tel:+919550830888">Call</a>
+
+<script>
+// Scroll to top on reload
+window.scrollTo(0,0);
+
+// Sticky nav shadow
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50);});
+
+// Mobile menu toggle
+const toggle=document.querySelector(".menu-toggle");
+const nav=document.querySelector(".nav-links");
+toggle.onclick=()=>{nav.classList.toggle("active");}
+
+// Hero slider
+let slides=document.querySelectorAll(".slide");let index=0;
+setInterval(()=>{slides[index].classList.remove("active");index=(index+1)%slides.length;slides[index].classList.add("active");},4000);
+
+// WhatsApp booking
+function bookRoom(room){
+let message=`Hello, I want to book ${room} at Dwaraka Lodge Kavali`;
+let url="https://wa.me/919550830888?text="+encodeURIComponent(message);
+window.open(url,"_blank");
+}
+
+// Stats counters
+const counters=document.querySelectorAll(".counter");
+counters.forEach(counter=>{
+counter.innerText='0';
+const update=()=>{
+const target=+counter.getAttribute('data-target');const c=+counter.innerText;const inc=target/200;
+if(c<target){counter.innerText=Math.ceil(c+inc);setTimeout(update,10);}else{counter.innerText=target;}}
+update();
+});
+
+// Gallery lightbox
+document.querySelectorAll(".gallery img").forEach(img=>{
+img.onclick=()=>{
+let viewer=document.createElement("div");
+viewer.style.position="fixed";viewer.style.top=0;viewer.style.left=0;
+viewer.style.width="100%";viewer.style.height="100%";
+viewer.style.background="rgba(0,0,0,0.9)";
+viewer.style.display="flex";viewer.style.alignItems="center";
+viewer.style.justifyContent="center";
+viewer.innerHTML=`<img src="${img.src}" style="max-width:90%;max-height:90%">`;
+viewer.onclick=()=>viewer.remove();
+document.body.appendChild(viewer);
+};
+});
+
+// Scroll animations
+const elements=document.querySelectorAll(".fade,.slide-left,.slide-right,.zoom");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");}});
+},{threshold:0.2});
+elements.forEach(el=>{observer.observe(el);});
+</script>
+</body>
+</html>
