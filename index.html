@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dwaraka Lodge Kavali</title>
+<title>Dwaraka Lodge Kavali | Premium Stay</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="images/logo.png" type="image/png">
 <style>
@@ -36,6 +36,24 @@ nav.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.15);}
 .btn:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(0,0,0,.2);}
 .btn-whatsapp{background:#25D366;color:white;}
 .btn-call{background:#007BFF;color:white;}
+.hero-buttons .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logo {
+    height: 20px;
+    width: auto;
+}
+
+.btn-mmt { background: #ffffff; color: white; }       /* MakeMyTrip orange */
+.btn-goibibo { background: #ffffff; color: white; }   /* Goibibo red */
+.btn-redbus { background: #ffffff; color: white; }    /* RedBus red */
+
+.btn-mmt:hover { background: #e5e5e5; }
+.btn-goibibo:hover { background: #e5e5e5; }
+.btn-redbus:hover { background: #e5e5e5; }
 
 /* SECTIONS */
 section{max-width:1100px;margin:auto;padding:80px 20px;}
@@ -133,6 +151,15 @@ footer{background:#111;color:white;text-align:center;padding:30px;margin-top:40p
 <p>Kavali’s Trusted Stay Since 1998</p>
 <div class="hero-buttons">
 <button class="btn btn-whatsapp" onclick="bookRoom('Room Booking Inquiry')">Book on WhatsApp</button>
+<button class="btn btn-mmt" onclick="window.open('https://www.makemytrip.global/hotels/hotel-details/?hotelId=201806131657073660','_blank')">
+        <img src="images/mmt.png" alt="MakeMyTrip" class="btn-logo">
+</button>
+    <button class="btn btn-goibibo" onclick="window.open('https://www.goibibo.com/hotels/dwarakalodge-hotel-in-kavali-5839051344976367327/','_blank')">
+        <img src="images/go.png" alt="Goibibo" class="btn-logo">
+    </button>
+    <button class="btn btn-redbus" onclick="window.open('https://www.redbus.in/','_blank')">
+        <img src="images/redbus.png" alt="RedBus" class="btn-logo">
+    </button>
 </div>
 </div>
 </section>
